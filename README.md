@@ -9,7 +9,11 @@ Hard of hearing and speech population, people with visual impairments and sensor
 # Features
 
 1. Transcribe videos and livestreams from YouTube and other online sources supported by [yt-dlp](https://pypi.org/project/yt-dlp).
-2. Get transcriptions with timestamps in an intuitive UI.
+2. Get transcriptions with timestamps in an intuitive UI for multiple languages using [faster-whisper](https://pypi.org/project/faster-whisper)
+
+# Screenshots
+
+![TranscribeIt interface for providing URL and viewing processed transcripts with timestamps](./assets/transcription-screenshot-01.png)
 
 # Roadmap
 
