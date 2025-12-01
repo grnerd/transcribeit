@@ -29,7 +29,6 @@ async def download_from_url(payload: TranscriptionRequest):
                         ).dict()
                     )
                 segments, info = config.whisper_model.transcribe(output_path)
-                logging.info(f"Result: {result}")
                 segment_data = []
                 for segment in segments:
                     segment_data.append({"start": segment.start, "end": segment.end, "text": segment.text})
@@ -39,7 +38,7 @@ async def download_from_url(payload: TranscriptionRequest):
                     content=TranscriptionResponse(
                         success=True,
                         message="Transcription from URL successful",
-                        data=segments
+                        data=segment_data
                     ).dict()
                 )
 

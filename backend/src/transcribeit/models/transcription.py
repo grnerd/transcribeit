@@ -7,4 +7,4 @@ class TranscriptionRequest(BaseModel):
 class TranscriptionResponse(BaseModel):
     success: bool = False
     message: str
-    data: Optional[List[str]]
+    data: Optional[List[dict]]
