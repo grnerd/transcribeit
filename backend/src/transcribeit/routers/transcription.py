@@ -7,6 +7,7 @@ from ..config import AppConfig, get_config
 from ..constants.download import YOUTUBE_URL_PREFIX
 from ..models.transcription import TranscriptionRequest, TranscriptionResponse
 from ..services.download.youtube import download_from_youtube
+from ..services.transcription import transcribe_audio
 
 
 router = APIRouter(tags=["Transcription"])
@@ -28,11 +29,7 @@ async def download_from_url(payload: TranscriptionRequest):
                             message=f"Failed to download YouTube video due to an internal error."
                         ).dict()
                     )
-                segments, info = config.whisper_model.transcribe(output_path)
-                segment_data = []
-                for segment in segments:
-                    segment_data.append({"start": segment.start, "end": segment.end, "text": segment.text})
-                os.remove(output_path)
+                segment_data = transcribe_audio(output_path)
                 return JSONResponse(
                     status_code=200,
                     content=TranscriptionResponse(
